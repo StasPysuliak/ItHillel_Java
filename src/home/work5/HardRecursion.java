@@ -8,26 +8,23 @@ public class HardRecursion {
 
         System.out.println("Enter the number: ");
         int number = correctNumber();
+        int current = 1;
+        String strRes = "1";
+        String res = (find(current, strRes, number));
+        System.out.println(res != null ? res : "Solution is not found");
 
-        if (result(number) != null) System.out.println(result(number));
-        else System.out.println("Solution is not found");
     }
 
-    private static String result(int number) {
-        find(1, "1", number);
-        return find(1, "1", number);
-    }
-
-    private static String find(int current, String history, int number) {
-        if (current == number) return history;
+    private static String find(int current, String strRes, int number) {
+        String str;
+        if (current == number) return strRes;
         else if (current > number) return null;
         else {
-            if (find(current + 5, "(" + history + " + 5)", number) != null)
-                return find(current + 5, "(" + history + " + 5)", number);
-            if (find(current * 3, "(" + history + " * 3)", number) != null)
-                return find(current * 3, "(" + history + " * 3)", number);
+            str = find(current + 5, "(" + strRes + " + 5)", number);
+            if (str != null) return str;
+            str = find(current * 3, "(" + strRes + " * 3)", number);
+            return str;
         }
-        return null;
     }
 
     private static int correctNumber() {                            //check the entered number
