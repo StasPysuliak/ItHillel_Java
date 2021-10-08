@@ -1,10 +1,17 @@
 package home.work6;
 
 class QuickSort {
-    void show(int[] arr1, int n1) {
-        quickSort(arr1, 0, n1 - 1);
-        System.out.println("Sorted array: ");
-        printArray(arr1, n1);
+    void show(int[] arr) {
+        long start;
+        long end;
+        int n = arr.length;
+        start = System.currentTimeMillis();
+        quickSort(arr, 0, n - 1);
+        end = System.currentTimeMillis();
+
+        System.out.println("Quick Sort: " + n + "random items");
+        printArray(arr, n);
+        System.out.println("Quick Sort sorted array by: " + (end - start) + "ms\n");
     }
 
     private void swap(int[] arr, int i, int j) {
@@ -37,7 +44,6 @@ class QuickSort {
     private void printArray(int[] arr, int size) {
         for (int i = 0; i < size; i++)
             System.out.print(arr[i] + " ");
-
         System.out.println();
     }
 }

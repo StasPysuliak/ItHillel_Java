@@ -2,13 +2,19 @@ package home.work6;
 
 class SelectionSort {
     void show(int[] arr) {
-        sort(arr);
-        System.out.println("Sorted array");
+        long start;
+        long end;
+        int n = arr.length;
+        start = System.currentTimeMillis();
+        sort(arr,n);
+        end = System.currentTimeMillis();
+
+        System.out.println("Selection Sort: " + n + "random items");
         printArray(arr);
+        System.out.println("Selection Sort sorted array by: " + (end - start) + "ms\n");
     }
 
-    private void sort(int[] arr) {
-        int n = arr.length;
+    private void sort(int[] arr, int n) {
         for (int i = 0; i < n - 1; i++) {
             int min_idx = i;
             for (int j = i + 1; j < n; j++)
@@ -19,6 +25,7 @@ class SelectionSort {
             arr[i] = temp;
         }
     }
+
     private void printArray(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n; ++i)
