@@ -39,8 +39,7 @@ public class Recursion {
     }
 
     private static int arrSum(int[] arr, int i) {                   //find the sum of the elements of the array
-        if (i >= arr.length) return 0;
-        return arr[i++] + arrSum(arr, i);
+        return i >= arr.length ? 0 : arr[i++] + arrSum(arr, i);
     }
 
     private static int maxValue(int[] arr, int i) {                 //the maximum value in the set array;
@@ -51,8 +50,7 @@ public class Recursion {
     }
 
     private static int sumOfNumber(int number) {                    //the sum of the digits of a given number
-        if (number == 0) return 0;
-        return number % 10 + sumOfNumber(number / 10);
+        return number == 0 ? 0 : number % 10 + sumOfNumber(number / 10);
     }
 
     private static String flipTheNumber(String str) {               //number in reverse order
