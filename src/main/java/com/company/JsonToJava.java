@@ -7,22 +7,23 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsonToJava {
-    public static void main(String[] args) {
-
+class JsonToJava {
+    void parser(String path) {
         Gson gson = new Gson();
-        String path = "G:\\Java\\JavaHomeWork\\src\\main\\java\\com\\company\\journal_ru.json";
         List<DayJournal> journal = null;
-
         try {
-            journal = gson.fromJson(new FileReader(path), new TypeToken<ArrayList<DayJournal>>(){}.getType());
+            journal = gson.fromJson(new FileReader(path), new TypeToken<ArrayList<DayJournal>>() {}.getType());
+            show(journal);
         } catch (FileNotFoundException e) {
             System.out.println("File is not found");
+        } catch (NullPointerException e) {
+            System.out.println("File is empty");
         }
+    }
 
-        for(DayJournal user : journal) {
+    private void show(List<DayJournal> journal) {
+        for (DayJournal user : journal) {
             System.out.println(user);
         }
-
     }
 }
