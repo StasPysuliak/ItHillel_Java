@@ -25,9 +25,13 @@ public class Fraction {
         int decimalPartRes;
         int tmp;
 
-        if (num1Length < num2Length) tmp = exponentiation(num1decimalPart, num2Length - num1Length);
-        else tmp = exponentiation(num2decimalPart, num1Length - num2Length);
-        decimalPartRes = tmp + num2decimalPart;
+        if (num1Length < num2Length) {
+            tmp = exponentiation(num1decimalPart, num2Length - num1Length);
+            decimalPartRes = tmp + num2decimalPart;
+        } else {
+            tmp = exponentiation(num2decimalPart, num1Length - num2Length);
+            decimalPartRes = tmp + num1decimalPart;
+        }
 
         if (length(decimalPartRes) > num1Length || length(decimalPartRes) > num2Length) {
             decimalPartRes -= exponentiation(1, length(decimalPartRes));
@@ -46,9 +50,13 @@ public class Fraction {
         int decimalPartRes;
         int tmp;
 
-        if (num1Length < num2Length) tmp = exponentiation(num1decimalPart, num2Length - num1Length);
-        else tmp = exponentiation(num2decimalPart, num1Length - num2Length);
-        decimalPartRes = tmp - num2decimalPart;
+        if (num1Length < num2Length) {
+            tmp = exponentiation(num1decimalPart, num2Length - num1Length);
+            decimalPartRes = tmp - num2decimalPart;
+        } else {
+            tmp = exponentiation(num2decimalPart, num1Length - num2Length);
+            decimalPartRes = tmp - num1decimalPart;
+        }
 
         if (length(decimalPartRes) > num1Length || length(decimalPartRes) > num2Length) {
             decimalPartRes -= exponentiation(1, length(decimalPartRes));
