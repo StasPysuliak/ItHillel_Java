@@ -3,6 +3,10 @@ package home.work10;
 import java.util.Arrays;
 import java.util.Scanner;
 
+//34,99 minus 89,31214
+//-10,5221 minus -0,97
+//-1,5 minus -1,6
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

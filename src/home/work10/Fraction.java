@@ -29,11 +29,11 @@ public class Fraction {
         if (num2.intPart < 0) num2decimalPart *= -1;
 
         if (num1Length < num2Length) {
-            num1decimalPart = exponentiation(num1decimalPart, num2Length - num1Length);             //alignment of numbers
+            num1decimalPart = exponentiation(num1decimalPart, num2Length - num1Length);
             num1Length = length(num1decimalPart);
             decimalPartRes = num1decimalPart + num2decimalPart;
         } else {
-            num2decimalPart = exponentiation(num2decimalPart, num1Length - num2Length);             //alignment of numbers
+            num2decimalPart = exponentiation(num2decimalPart, num1Length - num2Length);
             num2Length = length(num2decimalPart);
             decimalPartRes = num2decimalPart + num1decimalPart;
         }
@@ -46,8 +46,10 @@ public class Fraction {
             decimalPartRes -= exponentiation(1, length(decimalPartRes));
             intPartRes++;
         }
-
-
+        if (intPartRes < 0 && decimalPartRes > 0) {
+            decimalPartRes -= exponentiation(1, length(decimalPartRes)+1) ;
+            intPartRes++;
+        }
 
         return new int[]{intPartRes, decimalPartRes};
     }
@@ -66,24 +68,30 @@ public class Fraction {
 
         if (num1Length < num2Length) {
             num1decimalPart = exponentiation(num1decimalPart, num2Length - num1Length);
-
+            num1Length = length(num1decimalPart);
             decimalPartRes = num1decimalPart - num2decimalPart;
         } else {
             num2decimalPart = exponentiation(num2decimalPart, num1Length - num2Length);
-
+            num2Length = length(num2decimalPart);
             decimalPartRes = num2decimalPart - num1decimalPart;
         }
+//        if (num1decimalPart<0 && num2decimalPart<0) {
+//            decimalPartRes += exponentiation(1, length(decimalPartRes));
+//            intPartRes++;
+//        }
 
         if ((length(decimalPartRes) > num1Length || length(decimalPartRes) > num2Length) && decimalPartRes < 0) {
+            decimalPartRes += exponentiation(1, length(decimalPartRes));
+            intPartRes++;
+        }
+        if ((length(decimalPartRes) > num1Length || length(decimalPartRes) > num2Length) && decimalPartRes > 0) {
             decimalPartRes -= exponentiation(1, length(decimalPartRes));
             intPartRes--;
         }
-        if (length(decimalPartRes) > num1Length || length(decimalPartRes) > num2Length) {
-            decimalPartRes -= exponentiation(1, length(decimalPartRes));
-            intPartRes--;
-        }
-
-
+//        if (intPartRes < 0 && decimalPartRes > 0) {
+//            decimalPartRes -= exponentiation(1, length(decimalPartRes)+1) ;
+//            intPartRes--;
+//        }
 
         return new int[]{intPartRes, decimalPartRes};
     }
