@@ -42,7 +42,7 @@ public class Fraction {
             decimalPartRes += exponentiation(1, length(decimalPartRes));
             intPartRes--;
         }
-        if ((length(decimalPartRes) > num1Length || length(decimalPartRes) > num2Length) && decimalPartRes > 0) {       //increase intPartRes by one
+        if ((length(decimalPartRes) > num1Length || length(decimalPartRes) > num2Length) && decimalPartRes > 0) {
             decimalPartRes -= exponentiation(1, length(decimalPartRes));
             intPartRes++;
         }
