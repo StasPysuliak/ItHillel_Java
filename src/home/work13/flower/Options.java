@@ -5,35 +5,31 @@ import home.work13.flower.flowers.Rose;
 import home.work13.flower.flowers.Tulip;
 import home.work13.flower.flowers.Chamomile;
 
-import java.util.ArrayList;
-
-
 class Options {
-    void getFlower(int[] flowers) {
-        ArrayList<Flower> bunch = new ArrayList<>();
-        for (int i = 0; i < flowers.length; i++) {
-            for (int j = 0; j < flowers[i]; j++) {
-                switch (i) {
-                    case 0:
-                        bunch.add(new Rose("Rose", 45.0));
-                        break;
-                    case 1:
-                        bunch.add(new Chamomile("Chamomile", 15.0));
-                        break;
-                    case 2:
-                        bunch.add(new Tulip("Tulip", 20.0));
-                        break;
-                }
-            }
+    Flower getRandomFlower() {
+        int rd = (int) (Math.random() * 3);
+        Flower flower = null;
+        switch (rd) {
+
+            case 0:
+                flower = new Rose("Rose", 45.0);
+                break;
+            case 1:
+                flower = new Chamomile("Chamomile", 15.0);
+                break;
+            case 2:
+                flower = new Tulip("Tulip", 20.0);
+                break;
         }
-        bunch(bunch);
+        return flower;
     }
 
-    void bunch(ArrayList<Flower> bunch) {
+    void bunch(int amount) {
         int sum = 0;
-        for (int i = 0; i < bunch.size(); i++) {
-            System.out.println(i + ". " + bunch.get(i).getName() + " " + bunch.get(i).getCost());
-            sum += bunch.get(i).getCost();
+        for (int i = 0; i < amount; i++) {
+            Flower flower = getRandomFlower();
+            System.out.println(i + ". " + flower.getName() + " " + flower.getCost());
+            sum += flower.getCost();
         }
         System.out.println("Bunch cost: " + sum);
     }
