@@ -2,8 +2,8 @@ package home.work13.FlightTicket;
 
 public enum  Drinks {
 
-    YES(0, "Yes", 300),
-    NO(1, "No", 300);
+    YES(0, "Yes", 200),
+    NO(1, "No", 100);
 
     private int var;
     private String description;

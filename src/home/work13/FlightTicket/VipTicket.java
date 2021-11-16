@@ -11,7 +11,7 @@ public class VipTicket extends Ticket {
     }
 
     public int getCost() {
-
+        return this.meal.getPrice() + this.baggage.getFee() + super.getCost();
     }
 
     @Override

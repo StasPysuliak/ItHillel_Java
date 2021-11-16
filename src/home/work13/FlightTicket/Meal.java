@@ -10,7 +10,7 @@ public class Meal {
     }
 
     public int getPrice() {
-        return price();
+        return this.menu.getPrice() + this.drinks.getPrice();
     }
 
     public Menu getMenu() {

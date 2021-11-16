@@ -9,8 +9,8 @@ public class Baggage {
         this.customsFee = customsFee;
     }
 
-    public int getCustomsFee() {
-        return customsFee;
+    public int getFee() {
+        return customsFee * amount;
     }
 
     @Override

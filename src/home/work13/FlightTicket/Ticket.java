@@ -12,7 +12,7 @@ public class Ticket {
     }
 
     public int getCost() {
-
+        return flightInfo.getCost();
     }
 
     public int getSitNumber() {

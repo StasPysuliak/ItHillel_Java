@@ -6,7 +6,7 @@ import home.work13.flower.flowers.Tulip;
 import home.work13.flower.flowers.Chamomile;
 
 class Options {
-    Flower getRandomFlower() {
+    private Flower getRandomFlower() {
         int rd = (int) (Math.random() * 3);
         Flower flower = null;
         switch (rd) {
