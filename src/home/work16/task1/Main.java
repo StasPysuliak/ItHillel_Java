@@ -1,4 +1,4 @@
-package home.work16;
+package home.work16.task1;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -16,11 +16,9 @@ public class Main {
         lst1 = options.throughOne(new LinkedList<>(), listArray.listIterator(listArray.size()), listLink.listIterator());
         lst2 = options.throughTwo(listLink.listIterator(), lst2, listArray.listIterator(listArray.size()));
 
-        System.out.println(listArray);
-        System.out.println(listLink);
-        System.out.print("\nArrayList + LinkedList: ");
-        System.out.println(lst1);
-        System.out.print("\nArrayList + LinkedList 2: ");
-        System.out.println(lst2);
+        System.out.println("ArrayList: " + listArray);
+        System.out.println("LinkedList: " + listLink);
+        System.out.println("ArrayList + LinkedList: " + lst1);
+        System.out.println("ArrayList + LinkedList: " + lst2);
     }
 }
