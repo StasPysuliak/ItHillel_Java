@@ -2,29 +2,48 @@ package home.work17.task2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.TreeMap;
 
 class Reader {
-    private TreeMap<String, Integer> product = new TreeMap<>();
-    private TreeMap<String, TreeMap> customer = new TreeMap<>();
+    private ArrayList<String> customers = new ArrayList();
+    private ArrayList<Order> orders = new ArrayList();
+    private TreeMap<String, TreeMap> customerMap;
+    private TreeMap<String, Integer> orderMap;
 
-    TreeMap<String, TreeMap> getCustomer() {
-        return customer;
-    }
 
-    void reader() throws Exception {
+    private void myReader() throws Exception {
         BufferedReader br = new BufferedReader(new FileReader("G:\\Java\\JavaHomeWork\\src\\home\\work17\\task2\\customers.txt"));
-            String line = br.readLine();
-            while (line != null) {
-                parser(line.split(" "));
-                line = br.readLine();
-            }
+        String line = br.readLine();
+        while (line != null) {
+            parser(line.split(" "));
+            line = br.readLine();
+        }
     }
 
     private void parser(String[] tmp) {
-        System.out.println(Arrays.toString(tmp));
-        product.put(tmp[1],Integer.parseInt(tmp[2]));
-        customer.put(tmp[0],product);
+        if (!customers.contains(tmp[0])) customers.add(tmp[0]);
+        orders.add(new Order(tmp[0], tmp[1], Integer.parseInt(tmp[2])));
+    }
+
+    TreeMap customerGenerator() {
+        try {
+            myReader();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        customerMap = new TreeMap<>();
+        for (String s : customers) {
+            orderMap = new TreeMap<>();
+            for (Order o : orders) {
+                if (Objects.equals(o.getName(), s)) {
+                    if (!orderMap.containsKey(o.getProduct())) orderMap.put(o.getProduct(), o.getCount());
+                    else orderMap.put(o.getProduct(), orderMap.get(o.getProduct()) + o.getCount());
+                }
+            }
+            customerMap.put(s,orderMap);
+        }
+        return customerMap;
     }
 }
