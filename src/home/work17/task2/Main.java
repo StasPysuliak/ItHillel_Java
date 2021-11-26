@@ -7,6 +7,8 @@ public class Main {
         Reader reader = new Reader();
         reader.reader();
         customers = reader.getCustomer();
-        System.out.println(customers.get("Ivanov"));
+        for (String treeKey : customers.keySet()) {
+            System.out.println(treeKey + ": " + customers.get(treeKey));
+        }
     }
 }
