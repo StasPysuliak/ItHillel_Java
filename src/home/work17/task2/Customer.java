@@ -1,11 +1,11 @@
 package home.work17.task2;
 
-public class Order {
+public class Customer {
     private String name;
     private String product;
     private int count;
 
-    public Order(String name, String product, int count) {
+    public Customer(String name, String product, int count) {
         this.name = name;
         this.product = product;
         this.count = count;

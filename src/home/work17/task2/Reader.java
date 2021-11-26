@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 class Reader {
     private ArrayList<String> customers = new ArrayList();
-    private ArrayList<Order> orders = new ArrayList();
+    private ArrayList<Customer> orders = new ArrayList();
     private TreeMap<String, TreeMap> customerMap;
     private TreeMap<String, Integer> orderMap;
 
@@ -24,10 +24,10 @@ class Reader {
 
     private void parser(String[] tmp) {
         if (!customers.contains(tmp[0])) customers.add(tmp[0]);
-        orders.add(new Order(tmp[0], tmp[1], Integer.parseInt(tmp[2])));
+        orders.add(new Customer(tmp[0], tmp[1], Integer.parseInt(tmp[2])));
     }
 
-    TreeMap customerGenerator() {
+    void customerGenerator() {
         try {
             myReader();
         } catch (Exception e) {
@@ -36,7 +36,7 @@ class Reader {
         customerMap = new TreeMap<>();
         for (String s : customers) {
             orderMap = new TreeMap<>();
-            for (Order o : orders) {
+            for (Customer o : orders) {
                 if (Objects.equals(o.getName(), s)) {
                     if (!orderMap.containsKey(o.getProduct())) orderMap.put(o.getProduct(), o.getCount());
                     else orderMap.put(o.getProduct(), orderMap.get(o.getProduct()) + o.getCount());
@@ -44,6 +44,11 @@ class Reader {
             }
             customerMap.put(s,orderMap);
         }
-        return customerMap;
+    }
+
+    void showMap () {
+        for (String treeKey : customerMap.keySet()) {
+            System.out.println(treeKey + ": " + customerMap.get(treeKey));
+        }
     }
 }
