@@ -21,10 +21,4 @@ class JsonToJava {
         }
         return journal;
     }
-
-    private void show(List<DayJournal> journal) {
-        for (DayJournal user : journal) {
-            System.out.println(user);
-        }
-    }
 }
