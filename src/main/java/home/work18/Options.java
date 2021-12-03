@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class Options {
     private String path;
     private ArrayList<DayJournal> journal;
+
     public Options(String path) {
         this.journal = new JsonToJava().getJournal(path);
     }
@@ -19,12 +20,12 @@ public class Options {
         }
     }
 
-    private double phi(int[] table) {
+    public double phi(int[] table) {
         return (table[3] * table[0] - table[2] * table[1]) /
                 Math.sqrt((table[2] + table[3]) * (table[0] + table[1]) * (table[1] + table[3]) * (table[0] + table[2]));
     }
 
-    private int[] tableFor(String event) {
+    public int[] tableFor(String event) {
         int[] table = {0, 0, 0, 0};
         for (int i = 0; i < journal.size(); i++) {
             DayJournal entry = journal.get(i);
@@ -36,7 +37,7 @@ public class Options {
         return table;
     }
 
-    private ArrayList<String> journalEvents() {
+    public ArrayList<String> journalEvents() {
         ArrayList<String> events = new ArrayList<>();
         for (DayJournal entry : journal) {
             for (String event : entry.getEvents()) {
@@ -52,8 +53,7 @@ public class Options {
                     if (x.getEvents().contains("ел арахис") && !x.getEvents().contains("чистил зубы")) {
                         x.getEvents().add("ел арахис" + "-" + "чистил зубы");
                     }
-                })
-                .collect(Collectors.toList());
+                }).collect(Collectors.toList());
     }
 
 }

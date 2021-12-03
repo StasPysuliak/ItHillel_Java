@@ -13,6 +13,6 @@ public class JsonToJavaTest {
         boolean isContainsNull = journal.contains(null);
         assertFalse(journal.isEmpty());
         assertFalse(isContainsNull);
-
     }
 }
+
