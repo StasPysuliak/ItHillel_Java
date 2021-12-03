@@ -6,14 +6,6 @@ public class DayJournal {
     private List<String> events;
     private boolean squirrel;
 
-    public DayJournal() {
-    }
-
-    public DayJournal(String event) {
-        this.events.add(event);
-        this.squirrel = true;
-    }
-
     public List<String> getEvents() {
         return events;
     }

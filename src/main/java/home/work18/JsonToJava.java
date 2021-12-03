@@ -8,8 +8,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-class JsonToJava {
-    ArrayList<DayJournal> getJournal(String path) {
+public class JsonToJava {
+    public ArrayList<DayJournal> getJournal(String path) {
         Gson gson = new Gson();
         ArrayList<DayJournal> journal = null;
         try {

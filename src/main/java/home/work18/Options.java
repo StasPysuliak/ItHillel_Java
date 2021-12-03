@@ -1,6 +1,8 @@
 package home.work18;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Options {
     private String path;
@@ -44,13 +46,14 @@ public class Options {
         return events;
     }
 
-    void newEvent() {
-        for (DayJournal entry : journal) {
-            DayJournal dayJournal = new DayJournal("арахис-зубы");
-            journal.add(dayJournal);
-            if (entry.getEvents().contains("ел арахис") && entry.getEvents().contains("чистил зубы")) {
-            }
-        }
+    public List<DayJournal> newEvent() {
+        return journal.stream()
+                .peek(x -> {
+                    if (x.getEvents().contains("ел арахис") && !x.getEvents().contains("чистил зубы")) {
+                        x.getEvents().add("ел арахис" + "-" + "чистил зубы");
+                    }
+                })
+                .collect(Collectors.toList());
     }
 
 }
