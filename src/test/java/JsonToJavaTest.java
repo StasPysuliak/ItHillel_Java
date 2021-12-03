@@ -1,11 +1,12 @@
 import home.work18.DayJournal;
 import home.work18.JsonToJava;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-public class JsonToJavaTest {
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+class JsonToJavaTest {
     @Test
     void jsonTest() {
         JsonToJava jsonToJava = new JsonToJava();

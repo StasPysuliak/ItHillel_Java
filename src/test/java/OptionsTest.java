@@ -1,16 +1,23 @@
+import home.work18.DayJournal;
 import home.work18.Options;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class OptionsTest {
+    private Options options;
+
+    @BeforeEach
+    void init() {
+        options = new Options("src\\test\\resources\\journal_ru.json");
+    }
+
     @Test
-    void dayJournal () {
-        String path = "src\\test\\resources\\journal_ru.json";
-        Options options = new Options(path);
+    void dayJournal() {
         List<String> events = options.journalEvents();
         boolean isDist = events.size() == events.stream().distinct().count();
         assertFalse(events.contains(null));
@@ -19,20 +26,15 @@ class OptionsTest {
     }
 
     @Test
-    void testPhi() {
-        Options option = new Options("src\\test\\resources\\journal_ru.json");
-        int[] expected = {76, 9, 4, 1};
-        double res = option.phi(expected);
-        assertEquals(0.068, res, 1e-3);
-    }
+    void newEvent() {
+        List<DayJournal> event = options.newEvent();
+        List<DayJournal> journal = options.getJournal();
 
-    @Test
-    void testTable() {
-        Options option = new Options("src\\test\\resources\\journal_ru.json");
-        String event = "делал зарядку";
-        int[] expected = {76, 9, 4, 1};
-        int[] res = option.tableFor(event);
-        boolean isTab = Arrays.equals(expected, res);
-        assertTrue(isTab);
+        boolean isSizeEquals = event.size() == journal.size();
+
+        assertTrue(isSizeEquals);
+        assertFalse(event.contains("ел арахис-чистил зубы"));
+        assertFalse(event.isEmpty());
+        assertFalse(event.contains(null));
     }
 }

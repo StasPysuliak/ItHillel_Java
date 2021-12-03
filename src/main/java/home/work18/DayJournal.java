@@ -6,11 +6,11 @@ public class DayJournal {
     private List<String> events;
     private boolean squirrel;
 
-    public List<String> getEvents() {
+    List<String> getEvents() {
         return events;
     }
 
-    public boolean isSquirrel() {
+    boolean isSquirrel() {
         return squirrel;
     }
 

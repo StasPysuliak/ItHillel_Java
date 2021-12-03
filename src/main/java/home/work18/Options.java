@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Options {
-    private String path;
     private ArrayList<DayJournal> journal;
+
+    public ArrayList<DayJournal> getJournal() {
+        return journal;
+    }
 
     public Options(String path) {
         this.journal = new JsonToJava().getJournal(path);
