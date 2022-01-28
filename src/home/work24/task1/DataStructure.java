@@ -1,4 +1,4 @@
-package home.work23.task1;
+package home.work24.task1;
 
 public class DataStructure<T> {
     private final T[] array;

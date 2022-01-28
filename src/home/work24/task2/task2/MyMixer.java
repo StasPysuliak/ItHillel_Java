@@ -1,4 +1,4 @@
-package home.work23.task2.task2;
+package home.work24.task2.task2;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package home.work23.task2;
+package home.work24.task2;
 
-import home.work23.task2.task2.Runner;
+import home.work24.task2.task2.Runner;
 
 public class TaskGenerics {
     public static void main(String[] args) {
