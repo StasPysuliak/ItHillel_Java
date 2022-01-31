@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+version '1.0-SNAPSHOT'
+
+war {
+    archiveFileName = 'simpleapp.war';
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api
+    compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '5.0.0'
+
+}
